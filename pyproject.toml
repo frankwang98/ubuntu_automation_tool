@@ -3,7 +3,7 @@ requires = ["setuptools>=65.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "envsetup"
+name = "mysetuptool"
 version = "1.0.0"
 description = "Cross-platform environment setup automation tool for Windows, Linux and macOS"
 readme = "README.md"
@@ -42,16 +42,16 @@ dev = [
 ]
 
 [project.scripts]
-envsetup = "envsetup.cli:main"
+mysetuptool = "mysetuptool.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/frankwang98/envsetup"
-Repository = "https://github.com/frankwang98/envsetup"
-Issues = "https://github.com/frankwang98/envsetup/issues"
+Homepage = "https://github.com/frankwang98/mysetuptool"
+Repository = "https://github.com/frankwang98/mysetuptool"
+Issues = "https://github.com/frankwang98/mysetuptool/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["envsetup*"]
+include = ["mysetuptool*"]
 
 [tool.setuptools.package-data]
-envsetup = ["*.ps1"]
+mysetuptool = ["*.ps1"]
