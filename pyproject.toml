@@ -3,15 +3,15 @@ requires = ["setuptools>=65.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cross-tool"
+name = "envsetup"
 version = "1.0.0"
-description = "Cross-platform automation tool for Windows, Linux and macOS"
+description = "Cross-platform environment setup automation tool for Windows, Linux and macOS"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
     {name = "Frank Wang", email = "frankwang98@gmail.com"}
 ]
-keywords = ["automation", "system", "devops", "cross-platform", "ubuntu", "mac", "windows"]
+keywords = ["automation", "system", "devops", "environment", "setup", "cross-platform"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Console",
@@ -42,16 +42,16 @@ dev = [
 ]
 
 [project.scripts]
-cross-tool = "cross_tool.cli:main"
+envsetup = "envsetup.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/frankwang98/cross-automation-tool"
-Repository = "https://github.com/frankwang98/cross-automation-tool"
-Issues = "https://github.com/frankwang98/cross-automation-tool/issues"
+Homepage = "https://github.com/frankwang98/envsetup"
+Repository = "https://github.com/frankwang98/envsetup"
+Issues = "https://github.com/frankwang98/envsetup/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["cross_tool*"]
+include = ["envsetup*"]
 
 [tool.setuptools.package-data]
-cross_tool = ["*.ps1"]
+envsetup = ["*.ps1"]

@@ -1,30 +1,15 @@
 #!/usr/bin/env python3
-"""Cross-platform automation tool CLI"""
+"""Environment setup automation tool CLI"""
 import os
 import sys
 import platform
 import subprocess
 
 
-def get_package_root():
-    """Get the package root directory (works in development and installed package)"""
-    # Check if running as installed package
-    if hasattr(sys, '_MEIPASS'):
-        # PyInstaller bundle
-        return sys._MEIPASS
-
-    # Running in development (editable install)
-    # Navigate from src/cross_tool/cli.py to project root
+def get_script_dir():
+    """Get the script directory"""
     current_file = os.path.abspath(__file__)
-    src_dir = os.path.dirname(current_file)  # src/cross_tool
-    package_root = os.path.dirname(src_dir)  # src/
-    project_root = os.path.dirname(package_root)  # project root (where pyproject.toml is)
-
-    # Check if pyproject.toml exists
-    if os.path.exists(os.path.join(project_root, "pyproject.toml")):
-        return src_dir  # Return src/cross_tool where the scripts are
-
-    # Fallback: scripts are in the same directory as cli.py
+    src_dir = os.path.dirname(current_file)  # src/envsetup
     return src_dir
 
 
@@ -61,11 +46,11 @@ def run_windows_tool(script_dir):
 
 
 def main():
-    script_dir = get_package_root()
+    script_dir = get_script_dir()
     system = detect_platform()
 
     print(f"\n{'='*50}")
-    print(f"  Cross-Platform Automation Tool v1.0.0")
+    print(f"  Environment Setup Tool v1.0.0")
     print(f"  Detected OS: {platform.system()}")
     print(f"{'='*50}\n")
 
