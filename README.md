@@ -2,8 +2,8 @@
 
 A cross-platform automation toolkit for Windows, Linux (Ubuntu/Debian), and macOS.
 
-[![Python Version](https://img.shields.io/pypi/pyversions/cross-tool)](https://pypi.org/project/cross-tool/)
-[![License](https://img.shields.io/pypi/l/cross-tool)](LICENSE)
+[![Python Version](https://img.shields.io/pypi/pyversions/mysetuptool)](https://pypi.org/project/mysetuptool/)
+[![License](https://img.shields.io/pypi/l/mysetuptool)](LICENSE)
 
 ## Supported Platforms
 
@@ -11,21 +11,21 @@ A cross-platform automation toolkit for Windows, Linux (Ubuntu/Debian), and macO
 |----------|--------|--------|
 | Ubuntu/Debian | `ubuntu_tool.py` | ✅ |
 | macOS | `mac_tool.py` | ✅ |
-| Windows | `windows_tool.ps1` | ✅ |
+| Windows | `windows_tool.py` | ✅ |
 
 ## Installation
 
 ### From PyPI (Recommended)
 
 ```bash
-pip install cross-tool
+pip install mysetuptool
 ```
 
 ### From Source
 
 ```bash
-git clone https://github.com/frankwang98/cross-automation-tool.git
-cd cross-automation-tool
+git clone https://github.com/frankwang98/mysetuptool.git
+cd mysetuptool
 pip install -e .
 ```
 
@@ -35,10 +35,10 @@ pip install -e .
 
 ```bash
 # After installation, run:
-cross-tool
+mysetuptool
 
 # Or use the entry script directly:
-python tool.py
+python -m mysetuptool
 ```
 
 ### Platform-Specific Usage
@@ -46,7 +46,7 @@ python tool.py
 #### Linux (Ubuntu/Debian)
 
 ```bash
-python ubuntu_tool.py
+python -m mysetuptool.ubuntu_tool
 # or
 chmod +x ubuntu_tool.py && ./ubuntu_tool.py
 ```
@@ -54,20 +54,15 @@ chmod +x ubuntu_tool.py && ./ubuntu_tool.py
 #### macOS
 
 ```bash
-python mac_tool.py
+python -m mysetuptool.mac_tool
 # or
 chmod +x mac_tool.py && ./mac_tool.py
 ```
 
-#### Windows (PowerShell)
+#### Windows (Python)
 
-```powershell
-# Run as Administrator
-.\windows_tool.ps1
-
-# Or allow script execution:
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-.\windows_tool.ps1
+```bash
+python -m mysetuptool.windows_tool
 ```
 
 ## Features
@@ -108,13 +103,14 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ### Project Structure
 
 ```
-cross-automation-tool/
+mysetuptool/
 ├── src/
-│   └── cross_tool/
+│   └── mysetuptool/
 │       ├── __init__.py
 │       ├── cli.py
 │       ├── ubuntu_tool.py
-│       └── mac_tool.py
+│       ├── mac_tool.py
+│       └── windows_tool.py
 ├── scripts/
 │   └── windows_tool.ps1
 ├── pyproject.toml

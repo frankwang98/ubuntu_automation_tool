@@ -37,12 +37,12 @@ def run_mac_tool(script_dir):
 
 
 def run_windows_tool(script_dir):
-    """Run Windows PowerShell tool"""
-    script_path = os.path.join(script_dir, "windows_tool.ps1")
+    """Run Windows Python tool"""
+    script_path = os.path.join(script_dir, "windows_tool.py")
     if not os.path.exists(script_path):
-        print("Error: windows_tool.ps1 not found")
+        print("Error: windows_tool.py not found")
         sys.exit(1)
-    subprocess.run(["powershell.exe", "-ExecutionPolicy", "Bypass", "-File", script_path])
+    subprocess.run([sys.executable, script_path])
 
 
 def main():

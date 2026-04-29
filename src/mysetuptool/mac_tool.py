@@ -14,7 +14,6 @@ VERSION = "1.0.0 - " + datetime.now().strftime("%Y-%m-%d")
 class MacAutomationTool:
     def __init__(self):
         self.main_menu = {
-            "00": {"name": "脚本更新", "func": self.update_script},
             "1": {"name": "系统信息查询", "func": self.system_info},
             "2": {"name": "系统维护", "func": self.system_maintenance},
             "3": {"name": "安装开发工具", "func": self.install_dev_tools},
@@ -75,51 +74,6 @@ class MacAutomationTool:
             if choice in menu:
                 return choice
             print("无效输入，请重新选择")
-
-    def update_script(self) -> None:
-        """脚本自动更新"""
-        print(f"\n当前版本: {VERSION}")
-        print("正在检查更新...")
-        
-        try:
-            # 临时克隆仓库到/tmp目录
-            self.run_command("rm -rf /tmp/mac_automation_tool")
-            self.run_command("git clone https://github.com/frankwang98/mac_automation_tool.git /tmp/mac_automation_tool")
-            
-            # 检查是否有新版本
-            with open("/tmp/mac_automation_tool/mac_tool.py", "r") as f:
-                for line in f:
-                    if line.startswith("VERSION ="):
-                        new_version = line.split('"')[1]
-                        break
-            
-            if new_version != VERSION.split(" - ")[0]:
-                print(f"发现新版本: {new_version}")
-                confirm = input("是否更新? (y/n): ").lower()
-                if confirm == 'y':
-                    # 备份当前脚本
-                    script_path = os.path.realpath(__file__)
-                    backup_path = f"{script_path}.bak"
-                    self.run_command(f"cp {script_path} {backup_path}")
-                    
-                    # 替换脚本
-                    self.run_command(f"cp /tmp/mac_automation_tool/mac_tool.py {script_path}")
-                    self.run_command(f"chmod +x {script_path}")
-                    
-                    print(f"更新成功! 新版本: {new_version}")
-                    print("请重新运行脚本")
-                    sys.exit(0)
-                else:
-                    print("取消更新")
-            else:
-                print("当前已是最新版本")
-                
-            # 清理临时文件
-            self.run_command("rm -rf /tmp/mac_automation_tool")
-            
-        except Exception as e:
-            print(f"更新失败: {e}")
-            print("请检查网络连接或仓库地址")
 
     def system_info(self) -> None:
         """系统信息查询"""
